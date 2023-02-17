@@ -7,20 +7,37 @@ using std::endl;
 
 int main() {
 	int n;
-	int num = 1;
-	cout << "¸¶¹æÁøÀÇ Çà È¤Àº ¿­ÀÇ ¼ö¸¦ ÀÚ¿¬¼ö·Î ÀÔ·ÂÇØÁÖ¼¼¿ä ";
+	
+	cout << "ë§ˆë°©ì§„ì˜ í–‰ í˜¹ì€ ì—´ì˜ ìˆ˜ë¥¼ ìì—°ìˆ˜ë¡œ ì…ë ¥í•´ì£¼ì„¸ìš” ";
 	cin >> n;
 
 	if (n > 0) {
+		int x = 0;
+		int y = n / 2;
+		int aa;
+
 		int** num_arr = new int* [n];
 		for (int i = 0; i < n; i++) {
 			num_arr[i] = new int[n];
 		}
+		for (int i = 1; i < (n * n)+1; i++) {
+			num_arr[x][y] = i;
+			aa = i % n;
+			if (aa == 0) {
+				x++;
+			}
+			else {
+				if (--x < 0) {
+					x = n-1;
+				}
+				if (++y == n) {
+					y = 0;
+				}
+			}
+		}
 		for (int i = 0; i < n; i++) {
-			for (int j = 0; j < n/2 + 1; j++) {
-				num_arr[i][j] = num;
+			for (int j = 0; j < n; j++) {
 				cout << num_arr[i][j] << " ";
-				num = num + 1;
 			}
 			cout << endl;
 		}
